@@ -148,3 +148,137 @@ Migrating to CreateStudents (1)
   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
   [1m[35mSQL (0.3ms)[0m  INSERT INTO "students" ("first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["first_name", "Morty"], ["last_name", "Smith"], ["created_at", "2017-11-28 15:01:02.845645"], ["updated_at", "2017-11-28 15:01:02.845645"]]
   [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "students" ("first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["first_name", "Rick"], ["last_name", "Sanchez"], ["created_at", "2018-07-20 14:36:02.516578"], ["updated_at", "2018-07-20 14:36:02.516578"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "students" ("first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["first_name", "Morty"], ["last_name", "Smith"], ["created_at", "2018-07-20 14:36:02.520144"], ["updated_at", "2018-07-20 14:36:02.520144"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/students" for ::1 at 2018-07-20 10:50:09 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsController#index as HTML
+  [1m[35mStudent Load (0.6ms)[0m  SELECT "students".* FROM "students"
+  Rendered students/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 486ms (Views: 475.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2018-07-20 10:50:10 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2018-07-20 10:50:10 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2018-07-20 10:50:10 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2018-07-20 10:50:10 -0400
+
+
+Started GET "/students" for ::1 at 2018-07-20 10:51:10 -0400
+Processing by StudentsController#index as HTML
+  [1m[36mStudent Load (2.3ms)[0m  [1mSELECT "students".* FROM "students"[0m
+  Rendered students/index.html.erb within layouts/application (37.7ms)
+Completed 500 Internal Server Error in 60ms (ActiveRecord: 2.3ms)
+
+ActionView::Template::Error (undefined method `pry' for #<Binding:0x007fb2f5d6e200>
+Did you mean?  try):
+    1: <h1>Student Index</h1>
+    2: 
+    3: <%@students.each do |student|%>
+    4: <% binding.pry %>
+    5: <p><%= student%></p>
+    6: <%end%>
+  app/views/students/index.html.erb:4:in `block in _app_views_students_index_html_erb___195130611706751470_70203308042540'
+  app/views/students/index.html.erb:3:in `_app_views_students_index_html_erb___195130611706751470_70203308042540'
+
+
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.9ms)
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (90.7ms)
+
+
+Started GET "/students" for ::1 at 2018-07-20 10:51:32 -0400
+Processing by StudentsController#index as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `pry' for #<Binding:0x007fb2faa75ad0>
+Did you mean?  try):
+  app/controllers/students_controller.rb:5:in `index'
+
+
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.9ms)
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (84.2ms)
+
+
+Started GET "/students" for ::1 at 2018-07-20 10:51:47 -0400
+
+LoadError (cannot load such file -- pry):
+  app/controllers/application_controller.rb:5:in `<class:ApplicationController>'
+  app/controllers/application_controller.rb:1:in `<top (required)>'
+  app/controllers/students_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.7ms)
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (91.2ms)
+
+
+Started GET "/students" for ::1 at 2018-07-20 10:51:59 -0400
+
+LoadError (cannot load such file -- pry):
+  app/controllers/application_controller.rb:1:in `<top (required)>'
+  app/controllers/students_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (88.1ms)
+
+
+Started GET "/students" for ::1 at 2018-07-20 10:52:10 -0400
+Processing by StudentsController#index as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `pry' for #<Binding:0x007fb2f557ffa8>
+Did you mean?  try):
+  app/controllers/students_controller.rb:5:in `index'
+
+
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.5ms)
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/peterhargarten/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (79.9ms)
+
+
+Started GET "/students" for ::1 at 2018-07-20 10:52:19 -0400
+Processing by StudentsController#index as HTML
+  [1m[35mStudent Load (0.9ms)[0m  SELECT "students".* FROM "students"
+  Rendered students/index.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 31ms (Views: 28.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/students" for ::1 at 2018-07-20 10:59:06 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsController#index as HTML
+  [1m[35mStudent Load (0.6ms)[0m  SELECT "students".* FROM "students"
+  Rendered students/index.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 310ms (Views: 298.0ms | ActiveRecord: 0.9ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.6ms)[0m  [1mINSERT INTO "students" ("first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["first_name", "Rick"], ["last_name", "Sanchez"], ["created_at", "2018-07-20 15:02:43.349189"], ["updated_at", "2018-07-20 15:02:43.349189"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "students" ("first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["first_name", "Morty"], ["last_name", "Smith"], ["created_at", "2018-07-20 15:02:43.353523"], ["updated_at", "2018-07-20 15:02:43.353523"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
